@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photosynthesis Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', Arial, sans-serif;
+      background: #f5fff7;
+      color: #222;
+    }
+
+    /* NAV */
+    nav {
+      background: #2e7d32;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    nav .logo {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    nav ul a {
+      color: #c8e6c9;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    nav ul a:hover { color: #fff; text-decoration: underline; }
+
+    /* HERO */
+    .hero {
+      background: #1b5e20;
+      color: white;
+      text-align: center;
+      padding: 60px 24px 50px;
+    }
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      font-size: 17px;
+      max-width: 600px;
+      margin: 0 auto 28px;
+      color: #c8e6c9;
+      line-height: 1.6;
+    }
+    .hero .equation-box {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 10px;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 50px 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #2e7d32;
+      border-left: 5px solid #4caf50;
+      padding-left: 12px;
+      margin-bottom: 18px;
+    }
+    section p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 14px;
+    }
+    section ul {
+      margin-left: 22px;
+      margin-bottom: 14px;
+    }
+    section ul li {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 2px dashed #a5d6a7;
+      margin: 0 24px;
+    }
+
+    /* STAT CARDS */
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .stat-card {
+      background: #e8f5e9;
+      border: 2px solid #a5d6a7;
+      border-radius: 12px;
+      padding: 18px 20px;
+      flex: 1 1 160px;
+      text-align: center;
+    }
+    .stat-card .num {
+      font-size: 28px;
+      font-weight: 800;
+      color: #1b5e20;
+    }
+    .stat-card .lbl {
+      font-size: 13px;
+      color: #388e3c;
+      margin-top: 4px;
+    }
+
+    /* VOCAB */
+    .vocab-section {
+      background: #1b5e20;
+      padding: 50px 0;
+    }
+    .vocab-section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .vocab-section h2 {
+      color: #fff;
+      border-left-color: #81c784;
+      margin-bottom: 8px;
+    }
+    .vocab-section .sub {
+      color: #a5d6a7;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .vocab-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .vocab-card .term {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffcc02;
+      margin-bottom: 6px;
+    }
+    .vocab-card .def {
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    /* IMAGES */
+    .img-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .img-box {
+      flex: 1 1 260px;
+      text-align: center;
+    }
+    .img-box img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid #a5d6a7;
+    }
+    .img-box .caption {
+      font-size: 12px;
+      color: #666;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    /* STAGES */
+    .stages-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .stage-box {
+      flex: 1 1 260px;
+      border-radius: 12px;
+      padding: 24px 20px;
+    }
+    .stage-box.light { background: #e8f5e9; border: 2px solid #81c784; }
+    .stage-box.dark  { background: #fff8e1; border: 2px solid #ffd54f; }
+    .stage-box h3 {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .stage-box.light h3 { color: #2e7d32; }
+    .stage-box.dark h3  { color: #f57f17; }
+    .stage-box p { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 10px; }
+    .stage-box ul { margin-left: 18px; }
+    .stage-box ul li { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 3px; }
+    .tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .tag.green { background: #c8e6c9; color: #1b5e20; }
+    .tag.yellow { background: #fff9c4; color: #f57f17; border: 1px solid #ffd54f; }
+
+    /* EQUATION BIG */
+    .eq-big {
+      background: #1b5e20;
+      border-radius: 14px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 20px;
+      color: #fff;
+    }
+    .eq-big .eq-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .eq-big .eq-row .co2 { color: #80deea; }
+    .eq-big .eq-row .h2o { color: #90caf9; }
+    .eq-big .eq-row .gluc { color: #ffcc02; }
+    .eq-big .eq-row .oxy  { color: #a5d6a7; }
+    .eq-big .eq-row .arr  { color: #ffcc02; font-size: 24px; }
+    .eq-big .eq-row .plus { color: rgba(255,255,255,0.4); }
+    .eq-names {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 14px;
+    }
+    .eq-names span { font-size: 12px; color: rgba(255,255,255,0.5); }
+
+    /* WHY MATTERS */
+    .why-section {
+      background: #e8f5e9;
+      padding: 50px 0;
+    }
+    .why-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .why-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .why-card {
+      flex: 1 1 180px;
+      background: #fff;
+      border: 2px solid #a5d6a7;
+      border-radius: 12px;
+      padding: 22px 18px;
+      text-align: center;
+    }
+    .why-card .icon { font-size: 32px; margin-bottom: 10px; display: block; }
+    .why-card h4 { font-size: 15px; font-weight: 800; color: #2e7d32; margin-bottom: 8px; }
+    .why-card p  { font-size: 13px; color: #555; line-height: 1.6; }
+
+    /* QUIZ */
+    .quiz-section {
+      background: #f1f8e9;
+      padding: 50px 0;
+    }
+    .quiz-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .quiz-inner h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #2e7d32;
+      border-left: 5px solid #4caf50;
+      padding-left: 12px;
+      margin-bottom: 8px;
+    }
+    .quiz-inner .sub { font-size: 14px; color: #555; margin-bottom: 24px; }
+    .quiz-box {
+      background: #fff;
+      border: 2px solid #a5d6a7;
+      border-radius: 14px;
+      padding: 28px;
+    }
+    .q-progress { height: 6px; background: #e0e0e0; border-radius: 4px; margin-bottom: 20px; }
+    .q-fill { height: 100%; background: #4caf50; border-radius: 4px; transition: width 0.3s; }
+    .q-num { font-size: 12px; font-weight: 700; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+    .q-text { font-size: 18px; font-weight: 700; color: #1b5e20; margin-bottom: 22px; line-height: 1.4; }
+    .q-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+    .q-opt {
+      padding: 12px 16px; border: 2px solid #e0e0e0; border-radius: 10px;
+      background: #fafafa; font-size: 15px; color: #333; cursor: pointer;
+      text-align: left; font-family: 'Nunito', sans-serif; font-weight: 600;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .q-opt:hover:not(:disabled) { border-color: #4caf50; background: #f1f8e9; }
+    .q-opt.correct { border-color: #4caf50; background: #e8f5e9; color: #2e7d32; }
+    .q-opt.wrong   { border-color: #e53935; background: #ffebee; color: #b71c1c; }
+    .q-opt.reveal  { border-color: #4caf50; background: #e8f5e9; color: #2e7d32; }
+    .q-fb { font-size: 14px; color: #444; line-height: 1.6; padding: 12px 14px; border-radius: 10px; display: none; margin-bottom: 16px; }
+    .q-fb.show { display: block; }
+    .q-fb.ok  { background: #e8f5e9; color: #2e7d32; }
+    .q-fb.bad { background: #ffebee; color: #b71c1c; }
+    .q-next {
+      padding: 10px 24px; border-radius: 10px; border: 2px solid #2e7d32;
+      background: #2e7d32; color: #fff; font-size: 14px; font-weight: 700;
+      cursor: pointer; font-family: 'Nunito', sans-serif; display: none;
+    }
+    .q-next:hover { background: #1b5e20; }
+    .q-next.show { display: inline-block; }
+    .q-score { text-align: center; padding: 28px 10px; }
+    .q-score .big { font-size: 52px; font-weight: 800; color: #2e7d32; }
+    .q-score .msg { font-size: 16px; color: #555; margin: 10px 0 22px; }
+    .q-restart { padding: 10px 24px; border-radius: 10px; border: 2px solid #2e7d32; background: #2e7d32; color: #fff; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'Nunito', sans-serif; }
+    .q-restart:hover { background: #1b5e20; }
+
+    /* AUTHORS */
+    .authors-section {
+      text-align: center;
+      padding: 50px 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .authors-section h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #2e7d32;
+      border-left: 5px solid #4caf50;
+      padding-left: 12px;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    .authors-section .sub { font-size: 14px; color: #666; margin-bottom: 28px; text-align: left; }
+    .authors-row { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; }
+    .author-chip { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .author-av {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: #2e7d32; color: #ffcc02;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 800;
+    }
+    .author-name { font-size: 14px; font-weight: 700; color: #222; }
+
+    /* SOURCES */
+    .sources-section {
+      background: #2e7d32;
+      padding: 50px 0;
+    }
+    .sources-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .sources-inner h2 {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 800;
+      border-left: 5px solid #81c784;
+      padding-left: 12px;
+      margin-bottom: 8px;
+    }
+    .sources-inner .sub { color: #a5d6a7; font-size: 13px; margin-bottom: 24px; }
+    .sources-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .sources-list li { display: flex; gap: 14px; align-items: flex-start; }
+    .src-n { font-size: 15px; font-weight: 800; color: #ffcc02; min-width: 20px; }
+    .src-t { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+    .src-t a { color: #81c784; text-decoration: underline; word-break: break-word; }
+    .src-t a:hover { color: #ffcc02; }
+
+    /* FOOTER */
+    footer {
+      background: #1b5e20;
+      padding: 22px 24px;
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 26px; }
+      .stages-row, .why-cards, .img-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">🌿 Photosynthesis</div>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#vocab">Vocabulary</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#diagrams">Diagrams</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>🌱 Photosynthesis</h1>
+  <p>Photosynthesis is how plants make their own food using sunlight. It's basically how almost all life on Earth gets its energy!</p>
+  <div class="equation-box">
+    6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <h2>What is Photosynthesis?</h2>
+  <p>Photosynthesis is the process plants use to turn sunlight into food. They take in carbon dioxide from the air and water from the soil, and use energy from the sun to turn those things into sugar (glucose). As a bonus, they also release oxygen — which is what we breathe!</p>
+  <p>This all happens inside tiny structures in plant cells called <strong>chloroplasts</strong>. They contain a green pigment called <strong>chlorophyll</strong>, which is what makes plants green and what actually captures the sunlight.</p>
+  <p>Without photosynthesis, there would be no oxygen in the air and no food for animals to eat. Pretty much all life on Earth depends on it!</p>
+
+  <div class="stat-row">
+    <div class="stat-card"><div class="num">~3.5B</div><div class="lbl">years old — photosynthesis has been around a long time!</div></div>
+    <div class="stat-card"><div class="num">50%</div><div class="lbl">of Earth's oxygen comes from tiny ocean plants (phytoplankton)</div></div>
+    <div class="stat-card"><div class="num">500B</div><div class="lbl">tonnes of CO₂ absorbed by plants every year</div></div>
+    <div class="stat-card"><div class="num">~1%</div><div class="lbl">of sunlight actually gets turned into sugar by plants</div></div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- VOCABULARY -->
+<div class="vocab-section" id="vocab">
+  <div class="vocab-section-inner">
+    <h2>Key Vocabulary</h2>
+    <p class="sub">These are the important words you need to know for photosynthesis 👇</p>
+    <div class="vocab-grid">
+      <div class="vocab-card"><div class="term">Photosynthesis</div><div class="def">The process plants use to make food (sugar) from sunlight, water, and CO₂.</div></div>
+      <div class="vocab-card"><div class="term">Chloroplast</div><div class="def">The part of a plant cell where photosynthesis happens. Like the "kitchen" of the cell.</div></div>
+      <div class="vocab-card"><div class="term">Chlorophyll</div><div class="def">The green pigment inside chloroplasts that soaks up sunlight. This is why plants are green!</div></div>
+      <div class="vocab-card"><div class="term">Thylakoid</div><div class="def">Flat, pancake-like sacs inside chloroplasts where the light reactions happen.</div></div>
+      <div class="vocab-card"><div class="term">Stroma</div><div class="def">The liquid that fills the chloroplast around the thylakoids. This is where the Calvin Cycle happens.</div></div>
+      <div class="vocab-card"><div class="term">ATP</div><div class="def">The cell's energy currency. Made during the light reactions and used to power the Calvin Cycle.</div></div>
+      <div class="vocab-card"><div class="term">NADPH</div><div class="def">A molecule that carries electrons and energy. Helps build glucose in the Calvin Cycle.</div></div>
+      <div class="vocab-card"><div class="term">Calvin Cycle</div><div class="def">The second stage of photosynthesis where CO₂ gets turned into glucose using ATP and NADPH.</div></div>
+      <div class="vocab-card"><div class="term">Stomata</div><div class="def">Tiny holes on the bottom of leaves where CO₂ comes in and O₂ goes out. Like the leaf's nose!</div></div>
+      <div class="vocab-card"><div class="term">Glucose</div><div class="def">The sugar that plants make during photosynthesis. It's their food and energy source.</div></div>
+      <div class="vocab-card"><div class="term">Photolysis</div><div class="def">When light energy splits water molecules apart. This releases the oxygen we breathe!</div></div>
+      <div class="vocab-card"><div class="term">Carbon Fixation</div><div class="def">When CO₂ from the air gets "fixed" into solid sugar molecules the plant can use.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section id="process">
+  <h2>The 3 Things Plants Need</h2>
+  <p>For photosynthesis to work, plants need three main ingredients. Here's what each one does:</p>
+
+  <div class="stages-row">
+    <div class="stage-box light">
+      <h3>☀️ Sunlight</h3>
+      <p>Sunlight is the energy that powers everything. Chlorophyll soaks it up and uses it to make ATP (energy).</p>
+      <ul>
+        <li>Absorbed by chlorophyll</li>
+        <li>Powers the light reactions</li>
+        <li>Splits water molecules</li>
+        <li>Makes ATP and NADPH</li>
+      </ul>
+      <span class="tag green">Energy Source</span>
+    </div>
+    <div class="stage-box light">
+      <h3>💧 Water (H₂O)</h3>
+      <p>Water gets absorbed through the roots and travels up to the leaves. When light hits it, it splits apart and releases oxygen!</p>
+      <ul>
+        <li>Absorbed through roots</li>
+        <li>Gets split by light energy (photolysis)</li>
+        <li>Releases oxygen as a by-product</li>
+        <li>Provides electrons for the process</li>
+      </ul>
+      <span class="tag green">Electron Donor</span>
+    </div>
+    <div class="stage-box dark">
+      <h3>🌬️ Carbon Dioxide (CO₂)</h3>
+      <p>CO₂ floats in from the air through tiny holes in leaves called stomata. The plant grabs it and turns it into sugar.</p>
+      <ul>
+        <li>Enters through stomata in leaves</li>
+        <li>Gets "fixed" by RuBisCO enzyme</li>
+        <li>Combined with other molecules</li>
+        <li>Eventually becomes glucose</li>
+      </ul>
+      <span class="tag yellow">Carbon Source</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- TWO STAGES -->
+<section>
+  <h2>The 2 Stages of Photosynthesis</h2>
+  <p>Photosynthesis happens in two steps. The first step needs light, and the second step just uses the energy made in step 1.</p>
+
+  <div class="stages-row">
+    <div class="stage-box light">
+      <h3>Stage 1 — Light Reactions ☀️</h3>
+      <p>This happens in the <strong>thylakoid membranes</strong>. The plant captures sunlight and uses it to make energy molecules (ATP and NADPH). Water gets split apart and oxygen is released.</p>
+      <ul>
+        <li>Chlorophyll absorbs sunlight</li>
+        <li>Water is split (photolysis) → releases O₂</li>
+        <li>Electrons move through a chain</li>
+        <li>ATP and NADPH are produced</li>
+        <li>Oxygen floats out through stomata</li>
+      </ul>
+    </div>
+    <div class="stage-box dark">
+      <h3>Stage 2 — Calvin Cycle 🔄</h3>
+      <p>This happens in the <strong>stroma</strong>. The plant uses the ATP and NADPH from Stage 1 to turn CO₂ into glucose. No light is directly needed for this stage!</p>
+      <ul>
+        <li>CO₂ is grabbed from the air</li>
+        <li>RuBisCO enzyme helps fix the carbon</li>
+        <li>ATP and NADPH are used up</li>
+        <li>G3P molecules are made</li>
+        <li>G3P gets turned into glucose</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- DIAGRAMS -->
+<section id="diagrams">
+  <h2>Diagrams</h2>
+  <p>Here are some diagrams that show what photosynthesis looks like:</p>
+
+  <div class="img-row">
+    <div class="img-box">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Photosynthesis_en.svg/1280px-Photosynthesis_en.svg.png"
+        alt="Diagram showing the overall process of photosynthesis with sunlight, CO2, water, glucose, and oxygen"
+        onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Chloroplast_diagram.svg/1280px-Chloroplast_diagram.svg.png'"
+      />
+      <div class="caption">Overall photosynthesis process — shows what goes in and what comes out (Wikipedia / public domain)</div>
+    </div>
+    <div class="img-box">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Chloroplast_diagram.svg/1280px-Chloroplast_diagram.svg.png"
+        alt="Labeled diagram of a chloroplast showing thylakoids, stroma, and membranes"
+        onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Photosynthesis_en.svg/1280px-Photosynthesis_en.svg.png'"
+      />
+      <div class="caption">Inside a chloroplast — the organelle where photosynthesis takes place (Wikipedia / public domain)</div>
+    </div>
+  </div>
+
+  <div class="img-row" style="margin-top:18px">
+    <div class="img-box">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Calvin-cycle4.svg/1280px-Calvin-cycle4.svg.png"
+        alt="Diagram of the Calvin Cycle showing carbon fixation and glucose production"
+        onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Thylakoid_membrane.png/1280px-Thylakoid_membrane.png'"
+      />
+      <div class="caption">The Calvin Cycle — how CO₂ gets turned into glucose (Wikipedia / public domain)</div>
+    </div>
+    <div class="img-box">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Thylakoid_membrane.png/1280px-Thylakoid_membrane.png"
+        alt="Diagram of the thylakoid membrane showing the light reactions and electron transport chain"
+        onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Calvin-cycle4.svg/1280px-Calvin-cycle4.svg.png'"
+      />
+      <div class="caption">The thylakoid membrane — where the light reactions happen (Wikipedia / public domain)</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- EQUATION -->
+<section>
+  <h2>The Chemical Equation</h2>
+  <p>Here's the full equation for photosynthesis. Six CO₂ molecules and six water molecules combine with light energy to make one glucose molecule and six oxygen molecules.</p>
+
+  <div class="eq-big">
+    <div class="eq-row">
+      <span class="co2">6 CO₂</span>
+      <span class="plus">+</span>
+      <span class="h2o">6 H₂O</span>
+      <span class="plus">+</span>
+      <span style="color:#ffd54f">light energy</span>
+      <span class="arr">→</span>
+      <span class="gluc">C₆H₁₂O₆</span>
+      <span class="plus">+</span>
+      <span class="oxy">6 O₂</span>
+    </div>
+    <div class="eq-names">
+      <span>carbon dioxide</span>
+      <span>water</span>
+      <span>→</span>
+      <span>glucose (sugar)</span>
+      <span>oxygen</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY MATTERS -->
+<div class="why-section">
+  <div class="why-inner">
+    <h2 style="font-size:26px;font-weight:800;color:#2e7d32;border-left:5px solid #4caf50;padding-left:12px;margin-bottom:18px">Why Does Photosynthesis Matter?</h2>
+    <p style="font-size:15px;color:#333;margin-bottom:20px">Photosynthesis is way more important than just keeping plants alive. Here's why it matters for everyone:</p>
+    <div class="why-cards">
+      <div class="why-card"><span class="icon">🌬️</span><h4>Oxygen</h4><p>Almost all the oxygen we breathe comes from photosynthesis. Without it, we couldn't survive.</p></div>
+      <div class="why-card"><span class="icon">🍎</span><h4>Food</h4><p>Plants are at the bottom of pretty much every food chain. Everything we eat traces back to photosynthesis.</p></div>
+      <div class="why-card"><span class="icon">🌡️</span><h4>Climate</h4><p>Plants absorb CO₂ from the air, which helps slow down climate change.</p></div>
+      <div class="why-card"><span class="icon">⛽</span><h4>Fossil Fuels</h4><p>Coal and oil are made from ancient plants. They're basically stored sunlight from millions of years ago.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-section" id="quiz">
+  <div class="quiz-inner">
+    <h2>Test Yourself! 🧠</h2>
+    <p class="sub">10 questions on everything we covered. Good luck!</p>
+    <div class="quiz-box">
+      <div id="q-area">
+        <div class="q-progress"><div class="q-fill" id="q-fill" style="width:0%"></div></div>
+        <div class="q-num" id="q-num">Question 1 of 10</div>
+        <div class="q-text" id="q-text"></div>
+        <div class="q-options" id="q-opts"></div>
+        <div class="q-fb" id="q-fb"></div>
+        <button class="q-next" id="q-next">Next →</button>
+      </div>
+      <div class="q-score" id="q-score" style="display:none">
+        <div class="big" id="s-num">0/10</div>
+        <div class="msg" id="s-msg"></div>
+        <button class="q-restart" onclick="startQuiz()">Try Again 🔄</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTHORS -->
+<section class="authors-section">
+  <h2>Created By</h2>
+  <p class="sub">This page was made for our biology unit on photosynthesis.</p>
+  <div class="authors-row">
+    <div class="author-chip">
+      <div class="author-av">SH</div>
+      <div class="author-name">Sam Hermosillo</div>
+    </div>
+    <div class="author-chip">
+      <div class="author-av">RD</div>
+      <div class="author-name">Remy Delgado</div>
+    </div>
+    <div class="author-chip">
+      <div class="author-av">ER</div>
+      <div class="author-name">Emiliano Rosas</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCES -->
+<div class="sources-section" id="sources">
+  <div class="sources-inner">
+    <h2>Sources</h2>
+    <p class="sub">Here's where we got our info from:</p>
+    <ul class="sources-list">
+      <li>
+        <span class="src-n">1.</span>
+        <span class="src-t">Khan Academy — <em>Intro to Photosynthesis</em><br>
+        <a href="https://www.khanacademy.org/science/ap-biology/cellular-energetics/photosynthesis/a/intro-to-photosynthesis" target="_blank">https://www.khanacademy.org/science/ap-biology/cellular-energetics/photosynthesis</a></span>
+      </li>
+      <li>
+        <span class="src-n">2.</span>
+        <span class="src-t">National Geographic — <em>Photosynthesis</em><br>
+        <a href="https://education.nationalgeographic.org/resource/photosynthesis/" target="_blank">https://education.nationalgeographic.org/resource/photosynthesis/</a></span>
+      </li>
+      <li>
+        <span class="src-n">3.</span>
+        <span class="src-t">Encyclopedia Britannica — <em>Photosynthesis</em><br>
+        <a href="https://www.britannica.com/science/photosynthesis" target="_blank">https://www.britannica.com/science/photosynthesis</a></span>
+      </li>
+      <li>
+        <span class="src-n">4.</span>
+        <span class="src-t">OpenStax Biology 2e — <em>Chapter 8: Photosynthesis</em><br>
+        <a href="https://openstax.org/books/biology-2e/pages/8-introduction" target="_blank">https://openstax.org/books/biology-2e/pages/8-introduction</a></span>
+      </li>
+      <li>
+        <span class="src-n">5.</span>
+        <span class="src-t">Wikimedia Commons — <em>Photosynthesis diagrams (public domain images)</em><br>
+        <a href="https://commons.wikimedia.org/wiki/Category:Photosynthesis_diagrams" target="_blank">https://commons.wikimedia.org/wiki/Category:Photosynthesis_diagrams</a></span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Created by Sam Hermosillo, Remy Delgado &amp; Emiliano Rosas
+</footer>
+
+<script>
+var qs = [
+  { q: "What is the main pigment in plants that absorbs sunlight?", opts: ["Carotenoid", "Chlorophyll", "Melanin", "Anthocyanin"], ans: 1, fb: "Chlorophyll is the green pigment that absorbs sunlight. It's also what makes plants green!" },
+  { q: "Where do the light reactions happen in the chloroplast?", opts: ["Stroma", "Nucleus", "Thylakoid membrane", "Cell wall"], ans: 2, fb: "The light reactions happen in the thylakoid membranes. Think of them like stacked pancakes inside the chloroplast." },
+  { q: "What gas do plants release during photosynthesis?", opts: ["Carbon dioxide", "Nitrogen", "Oxygen", "Hydrogen"], ans: 2, fb: "Plants release oxygen! This happens when water gets split apart during the light reactions." },
+  { q: "What enzyme helps fix CO₂ in the Calvin Cycle?", opts: ["ATP synthase", "RuBisCO", "Amylase", "Helicase"], ans: 1, fb: "RuBisCO grabs CO₂ from the air and helps start the process of turning it into sugar." },
+  { q: "Where does the Calvin Cycle happen?", opts: ["Thylakoid", "Granum", "Stroma", "Outer membrane"], ans: 2, fb: "The Calvin Cycle happens in the stroma — the liquid that fills the chloroplast." },
+  { q: "Which two molecules from the light reactions power the Calvin Cycle?", opts: ["ADP and NAD+", "ATP and NADPH", "FADH₂ and GTP", "Glucose and oxygen"], ans: 1, fb: "ATP and NADPH are made during the light reactions and used up in the Calvin Cycle to build glucose." },
+  { q: "How does CO₂ get into a plant leaf?", opts: ["Through root hairs", "Through the xylem", "Through stomata", "Through phloem"], ans: 2, fb: "CO₂ enters leaves through tiny holes called stomata. Oxygen also exits through them!" },
+  { q: "What is the chemical formula for glucose?", opts: ["CO₂", "C₆H₁₂O₆", "H₂O", "C₁₂H₂₂O₁₁"], ans: 1, fb: "Glucose is C₆H₁₂O₆. It's the sugar that plants make and use for energy." },
+  { q: "What happens to water during the light reactions?", opts: ["It's made as a product", "It's stored in the vacuole", "It gets split apart, releasing oxygen", "It gets turned into CO₂"], ans: 2, fb: "Water gets split during photolysis! The oxygen that's released is what we breathe." },
+  { q: "Which organelle is where photosynthesis takes place?", opts: ["Mitochondria", "Ribosome", "Nucleus", "Chloroplast"], ans: 3, fb: "Photosynthesis happens in the chloroplast — the green organelles in plant cells." }
+];
+
+var cur = 0, score = 0, answered = false;
+
+function startQuiz() {
+  cur = 0; score = 0; answered = false;
+  document.getElementById('q-area').style.display = 'block';
+  document.getElementById('q-score').style.display = 'none';
+  render();
+}
+
+function render() {
+  answered = false;
+  var q = qs[cur];
+  document.getElementById('q-num').textContent = 'Question ' + (cur + 1) + ' of ' + qs.length;
+  document.getElementById('q-fill').style.width = ((cur / qs.length) * 100) + '%';
+  document.getElementById('q-text').textContent = q.q;
+  var optsDiv = document.getElementById('q-opts');
+  optsDiv.innerHTML = '';
+  q.opts.forEach(function(opt, i) {
+    var btn = document.createElement('button');
+    btn.className = 'q-opt';
+    btn.textContent = opt;
+    btn.onclick = function() { pick(i, btn); };
+    optsDiv.appendChild(btn);
+  });
+  var fb = document.getElementById('q-fb');
+  fb.className = 'q-fb';
+  fb.textContent = '';
+  document.getElementById('q-next').className = 'q-next';
+}
+
+function pick(idx, btn) {
+  if (answered) return;
+  answered = true;
+  var q = qs[cur];
+  var opts = document.querySelectorAll('.q-opt');
+  opts.forEach(function(o) { o.disabled = true; });
+  var fb = document.getElementById('q-fb');
+  if (idx === q.ans) {
+    btn.classList.add('correct');
+    score++;
+    fb.className = 'q-fb ok show';
+    fb.textContent = '✅ Correct! ' + q.fb;
+  } else {
+    btn.classList.add('wrong');
+    opts[q.ans].classList.add('reveal');
+    fb.className = 'q-fb bad show';
+    fb.textContent = '❌ Not quite. ' + q.fb;
+  }
+  var nxt = document.getElementById('q-next');
+  nxt.className = 'q-next show';
+  nxt.textContent = cur < qs.length - 1 ? 'Next →' : 'See Score';
+}
+
+document.getElementById('q-next').onclick = function() {
+  cur++;
+  if (cur < qs.length) {
+    render();
+  } else {
+    document.getElementById('q-fill').style.width = '100%';
+    document.getElementById('q-area').style.display = 'none';
+    document.getElementById('q-score').style.display = 'block';
+    document.getElementById('s-num').textContent = score + '/10';
+    var msg = '';
+    if (score === 10) msg = '🌿 Perfect! You really know your photosynthesis!';
+    else if (score >= 8) msg = '☀️ Great job! You got most of them!';
+    else if (score >= 6) msg = '💧 Not bad! Review the Calvin Cycle section and try again.';
+    else msg = '🌱 Keep studying! Go back through the vocab and diagrams sections.';
+    document.getElementById('s-msg').textContent = msg;
+  }
+};
+
+startQuiz();
+</script>
+</body>
+</html>
